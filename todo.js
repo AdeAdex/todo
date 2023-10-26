@@ -120,16 +120,13 @@ function addTodo() {
     myFruits.push(myInput.value);
     alertMessage.innerHTML = `New Todo added successfully`;
     alertMessage.style.backgroundColor = 'rgba(200, 247, 197, .5)';
-    alertMessage.style color = 'green';
+    alertMessage.style.color = 'green';
     alertMessage.style.visibility = 'visible';
 
-    // Save the updated myFruits array to localStorage
     localStorage.setItem('myFruits', JSON.stringify(myFruits));
   }
   newTask();
 }
-
-// ... (rest of your functions remain the same)
 
 function delTodo(userIndex) {
   var userResponse = confirm(
@@ -196,5 +193,10 @@ function newTask() {
   }
 }
 
-// Initial call to populate tasks from localStorage
-newTask();
+
+function fetchFromLocalStorage() {
+  if (myFruits.length > 0) {
+    newTask();
+  }
+}
+

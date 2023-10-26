@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="todo.css" />
     <title>Document</title>
   </head>
-  <body>
+  <body onload="fetchFromLocalStorage()">
     <div class="main-container">
       <span class="todo-text">todo app</span>
       <button onclick="addTodo()" class="new-task-btn">
