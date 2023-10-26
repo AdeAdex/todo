@@ -124,49 +124,49 @@ function addTodo() {
   }
   newTask();
 }
-
 function delTodo(userIndex) {
-  var userResponse = confirm(
-    `Are you sure you want to delete this Todo? This action cannot be undone`
-  );
-  if (userResponse == true) {
-    myFruits.splice(userIndex, 1);
-    alertMessage.innerHTML = `Todo Deleted Successfully!`;
-    alertMessage.style.backgroundColor = 'rgb(247, 204, 204)';
-    alertMessage.style.color = 'rgb(255, 0, 0)';
-    alertMessage.style.visibility = 'visible';
-
-    // Save the updated myFruits array to localStorage
-    localStorage.setItem('myFruits', JSON.stringify(myFruits));
-  } else {
-    alertMessage.innerHTML = `You just canceled, your Todo is not deleted`;
-    alertMessage.style.backgroundColor = 'rgba(200, 247, 197, 0.5)';
-    alertMessage.style.color = 'green';
-    alertMessage.style.visibility = 'visible';
+    var userResponse = confirm(
+      `Are you sure you want to delete this Todo? This action cannot be undone`
+    );
+    if (userResponse == true) {
+      myFruits.splice(userIndex, 1);
+      alertMessage.innerHTML = `Todo Deleted Successfully!`;
+      alertMessage.style.backgroundColor = 'rgb(247, 204, 204)';
+      alertMessage.style.color = 'rgb(255, 0, 0)';
+      alertMessage.style.visibility = 'visible';
+  
+      // Save the updated myFruits array to localStorage immediately after deletion
+      localStorage.setItem('myFruits', JSON.stringify(myFruits));
+    } else {
+      alertMessage.innerHTML = `You just canceled, your Todo is not deleted`;
+      alertMessage.style.backgroundColor = 'rgba(200, 247, 197, 0.5)';
+      alertMessage.style.color = 'green';
+      alertMessage.style.visibility = 'visible';
+    }
+    newTask();
   }
-  newTask();
-}
-
-function editTodo(userIndex) {
-  const myInput = document.getElementById('myInput');
-
-  if (myInput.value === '') {
-    alertMessage.innerHTML = `Please enter a Todo to be updated`;
-    alertMessage.style.backgroundColor = 'rgb(247, 204, 204)';
-    alertMessage.style.color = 'rgb(255, 0, 0)';
-    alertMessage.style.visibility = 'visible';
-  } else {
-    myFruits.splice(userIndex, 1, myInput.value);
-    alertMessage.innerHTML = `Your Todo has been updated successfully`;
-    alertMessage.style.backgroundColor = 'rgba(200, 247, 197, 0.5)';
-    alertMessage.style.color = 'green';
-    alertMessage.style.visibility = 'visible';
-
-    // Save the updated myFruits array to localStorage
-    localStorage.setItem('myFruits', JSON.stringify(myFruits));
+  
+  function editTodo(userIndex) {
+    const myInput = document.getElementById('myInput');
+  
+    if (myInput.value === '') {
+      alertMessage.innerHTML = `Please enter a Todo to be updated`;
+      alertMessage.style.backgroundColor = 'rgb(247, 204, 204)';
+      alertMessage.style.color = 'rgb(255, 0, 0)';
+      alertMessage.style.visibility = 'visible';
+    } else {
+      myFruits.splice(userIndex, 1, myInput.value);
+      alertMessage.innerHTML = `Your Todo has been updated successfully`;
+      alertMessage.style.backgroundColor = 'rgba(200, 247, 197, 0.5)';
+      alertMessage.style color = 'green';
+      alertMessage.style.visibility = 'visible';
+  
+      // Save the updated myFruits array to localStorage immediately after editing
+      localStorage.setItem('myFruits', JSON.stringify(myFruits));
+    }
+    newTask();
   }
-  newTask();
-}
+  
 
 function delAll() {
   myFruits = [];
