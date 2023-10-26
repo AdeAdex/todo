@@ -170,7 +170,7 @@ function delTodo(userIndex) {
 
 function delAll() {
   myFruits = [];
-  localStorage.removeItem('myFruits'); // Remove the entire myFruits key from localStorage
+  localStorage.removeItem('myFruits');
   myOutput.innerHTML = myFruits;
 }
 
