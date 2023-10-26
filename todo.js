@@ -158,10 +158,9 @@ function delTodo(userIndex) {
       myFruits.splice(userIndex, 1, myInput.value);
       alertMessage.innerHTML = `Your Todo has been updated successfully`;
       alertMessage.style.backgroundColor = 'rgba(200, 247, 197, 0.5)';
-      alertMessage.style color = 'green';
+      alertMessage.style.color = 'green';
       alertMessage.style.visibility = 'visible';
   
-      // Save the updated myFruits array to localStorage immediately after editing
       localStorage.setItem('myFruits', JSON.stringify(myFruits));
     }
     newTask();
