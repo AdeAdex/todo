@@ -55,7 +55,7 @@ function delTodo(userIndex) {
     const myInput = document.getElementById('myInput');
   
     if (myInput.value === '') {
-      alertMessage.innerHTML = `Please enter a new Todo to be updated`;
+      alertMessage.innerHTML = `To update the previous task, please enter a new Todo.`;
       alertMessage.style.backgroundColor = 'rgb(247, 204, 204)';
       alertMessage.style.color = 'rgb(255, 0, 0)';
       alertMessage.style.visibility = 'visible';
