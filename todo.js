@@ -75,15 +75,20 @@ function delTodo(userIndex) {
   }
   
   function delAll() {
-    myFruits = [];
+    var userResponse = confirm(
+      `Are you sure you want to delete all the Todo's? This action cannot be undone`
+    );
+    if (userResponse == true) {
+      myFruits = [];
     localStorage.removeItem('myFruits');
     myOutput.innerHTML = myFruits;
     alertMessage.innerHTML = `All todos have been deleted.`;
   
-    // Add a timer to clear the message after 3 seconds
+    }
     setTimeout(function () {
-      alertMessage.innerHTML = '';
-    }, 3000); // 3000 milliseconds (3 seconds)
+      alertMessage.style.visibility = 'hidden';
+    }, 3000); 
+    newTask();
   }
   
 
