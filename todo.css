@@ -45,12 +45,36 @@
     margin: auto 0px;
 }
 
+.delete-task-btn {
+    background-color: #FF0000;
+    color: white;
+    text-transform: capitalize;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    padding: 5px 10px;
+    gap: 10px;
+    margin: 0px auto;
+    margin-bottom: 0px;
+    width: auto;
+}
+
+.delete-task-span {
+    font-size: 15px;
+    font-weight: bold;
+    margin: auto 0px;
+}
+
 .fas {
     font-size: 20px;
     font-weight: bolder;
     background-color: rgba(200, 270, 197, 1);
     padding: 8px;
     border-radius: 5px;
+}
+
+.fa-times {
+    background-color: ;
 }
 
 #myInput {
