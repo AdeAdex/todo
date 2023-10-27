@@ -1,6 +1,7 @@
 
 let myFruits = JSON.parse(localStorage.getItem('myFruits')) || [];
 
+
 function addTodo() {
   const myInput = document.getElementById('myInput');
 
@@ -70,6 +71,9 @@ function delAll() {
 }
 
 function newTask() {
+  if (myFruits.length > 0) {
+    deleteAllButton.style.display = "flex"
+  }
   myOutput.innerHTML = '';
   const myInput = document.getElementById('myInput');
   myInput.value = '';
@@ -84,6 +88,9 @@ function newTask() {
          </div>`;
   }
 }
+
+
+let deleteAllButton = document.getElementsByClassName('delete-task-btn')[0];
 
 function fetchFromLocalStorage() {
   if (!myFruits) {
