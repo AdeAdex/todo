@@ -73,23 +73,23 @@ function delTodo(userIndex) {
     }, 3000);
     newTask();
   }
-  
   function delAll() {
     var userResponse = confirm(
       `Are you sure you want to delete all the Todo's? This action cannot be undone`
     );
     if (userResponse == true) {
       myFruits = [];
-    localStorage.removeItem('myFruits');
-    myOutput.innerHTML = myFruits;
-    alertMessage.innerHTML = `All todos have been deleted.`;
+      localStorage.removeItem('myFruits');
+      myOutput.innerHTML = myFruits;
+      alertMessage.innerHTML = `All todos have been deleted.`;
   
+      setTimeout(function () {
+        alertMessage.style.visibility = 'hidden';
+      }, 3000);
+      newTask();
     }
-    setTimeout(function () {
-      alertMessage.style.visibility = 'hidden';
-    }, 3000); 
-    newTask();
   }
+  
   
 
 function newTask() {
