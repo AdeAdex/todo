@@ -19,6 +19,9 @@ function addTodo() {
 
     localStorage.setItem('myFruits', JSON.stringify(myFruits));
   }
+  setTimeout(function () {
+    alertMessage.style.visibility = 'hidden';
+  }, 3000);
   newTask();
 }
 function delTodo(userIndex) {
@@ -40,6 +43,9 @@ function delTodo(userIndex) {
       alertMessage.style.color = 'green';
       alertMessage.style.visibility = 'visible';
     }
+    setTimeout(function () {
+      alertMessage.style.visibility = 'hidden';
+    }, 3000);
     newTask();
   }
   
@@ -60,6 +66,9 @@ function delTodo(userIndex) {
   
       localStorage.setItem('myFruits', JSON.stringify(myFruits));
     }
+    setTimeout(function () {
+      alertMessage.style.visibility = 'hidden';
+    }, 3000);
     newTask();
   }
   
