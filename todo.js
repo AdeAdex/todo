@@ -20,7 +20,7 @@ function addTodo() {
     localStorage.setItem('myFruits', JSON.stringify(myFruits));
   }
   setTimeout(function () {
-    alertMessage.style.visibility = 'hidden';
+    alertMessage.style.display = 'none';
   }, 3000);
   newTask();
 }
@@ -44,7 +44,7 @@ function delTodo(userIndex) {
       alertMessage.style.visibility = 'visible';
     }
     setTimeout(function () {
-      alertMessage.style.visibility = 'hidden';
+      alertMessage.style.display = 'none';
     }, 3000);
     newTask();
   }
@@ -67,7 +67,7 @@ function delTodo(userIndex) {
       localStorage.setItem('myFruits', JSON.stringify(myFruits));
     }
     setTimeout(function () {
-      alertMessage.style.visibility = 'hidden';
+      alertMessage.style.display = 'none';
     }, 3000);
     newTask();
   }
