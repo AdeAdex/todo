@@ -20,10 +20,12 @@ function addTodo() {
     localStorage.setItem('myFruits', JSON.stringify(myFruits));
   }
   setTimeout(function () {
-    alertMessage.style.display = 'none';
+    alertMessage.style.visibility = 'hidden';
   }, 3000);
   newTask();
 }
+
+
 function delTodo(userIndex) {
     var userResponse = confirm(
       `Are you sure you want to delete this Todo? This action cannot be undone`
@@ -44,7 +46,7 @@ function delTodo(userIndex) {
       alertMessage.style.visibility = 'visible';
     }
     setTimeout(function () {
-      alertMessage.style.display = 'none';
+      alertMessage.style.visibility = 'hidden';
     }, 3000);
     newTask();
   }
@@ -53,7 +55,7 @@ function delTodo(userIndex) {
     const myInput = document.getElementById('myInput');
   
     if (myInput.value === '') {
-      alertMessage.innerHTML = `Please enter a Todo to be updated`;
+      alertMessage.innerHTML = `Please enter a new Todo to be updated`;
       alertMessage.style.backgroundColor = 'rgb(247, 204, 204)';
       alertMessage.style.color = 'rgb(255, 0, 0)';
       alertMessage.style.visibility = 'visible';
@@ -67,7 +69,7 @@ function delTodo(userIndex) {
       localStorage.setItem('myFruits', JSON.stringify(myFruits));
     }
     setTimeout(function () {
-      alertMessage.style.display = 'none';
+      alertMessage.style.visibility = 'hidden';
     }, 3000);
     newTask();
   }
