@@ -74,12 +74,18 @@ function delTodo(userIndex) {
     newTask();
   }
   
-
-function delAll() {
-  myFruits = [];
-  localStorage.removeItem('myFruits');
-  myOutput.innerHTML = myFruits;
-}
+  function delAll() {
+    myFruits = [];
+    localStorage.removeItem('myFruits');
+    myOutput.innerHTML = myFruits;
+    alertMessage.innerHTML = `All todos have been deleted.`;
+  
+    // Add a timer to clear the message after 3 seconds
+    setTimeout(function () {
+      alertMessage.innerHTML = '';
+    }, 3000); // 3000 milliseconds (3 seconds)
+  }
+  
 
 function newTask() {
   if (myFruits.length > 0) {
