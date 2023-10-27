@@ -73,6 +73,7 @@ function delTodo(userIndex) {
     }, 3000);
     newTask();
   }
+  
   function delAll() {
     var userResponse = confirm(
       `Are you sure you want to delete all the Todo's? This action cannot be undone`
@@ -83,12 +84,17 @@ function delTodo(userIndex) {
       myOutput.innerHTML = myFruits;
       alertMessage.innerHTML = `All todos have been deleted.`;
   
+      // Apply the "no-box-shadow" class to remove box shadow and padding
+      var divBorder = document.querySelector('.div-border');
+      divBorder.classList.add('no-box-shadow');
+  
       setTimeout(function () {
         alertMessage.style.visibility = 'hidden';
       }, 3000);
       newTask();
     }
   }
+  
   
   
 

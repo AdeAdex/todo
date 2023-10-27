@@ -46,9 +46,15 @@ body {
 }
 
 .div-border {
-    padding: 10px 5px;
-    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px 5px;
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
 }
+
+.no-box-shadow {
+    padding: 0; /* Remove padding */
+    box-shadow: none; /* Remove box shadow */
+  }
+  
 
 .delete-task-btn {
   background-color: #e90909;
