@@ -73,6 +73,8 @@ function delAll() {
 function newTask() {
   if (myFruits.length > 0) {
     deleteAllButton.style.display = "flex"
+  } else {
+    deleteAllButton.style.display = "none"
   }
   myOutput.innerHTML = '';
   const myInput = document.getElementById('myInput');
