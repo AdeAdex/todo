@@ -1,7 +1,6 @@
 let myFruits = JSON.parse(localStorage.getItem("myFruits")) || [];
-var myOutput = document.getElementById("myOutput"); 
+var myOutput = document.getElementById("myOutput");
 const myInput = document.getElementById("myInput");
-
 
 function addTodo() {
   var divBorder = document.querySelector(".div-border");
@@ -25,7 +24,6 @@ function addTodo() {
   }, 3000);
   newTask();
 }
-
 
 function editTodo(userIndex) {
   if (myInput.value === "") {
@@ -74,7 +72,6 @@ function delTodo(userIndex) {
   newTask();
 }
 
-
 function delAll() {
   var userResponse = confirm(
     `Are you sure you want to delete all the Todo's? This action cannot be undone`
@@ -95,7 +92,6 @@ function delAll() {
   }
 }
 
-
 let deleteAllButton = document.getElementsByClassName("delete-task-btn")[0];
 
 function newTask() {
@@ -104,12 +100,11 @@ function newTask() {
 
   if (myFruits.length > 0) {
     deleteAllButton.style.display = "flex";
-     myOutput.innerHTML = "";
-  myInput.value = "";
+    myOutput.innerHTML = "";
+    myInput.value = "";
 
-
-  for (let index = 0; index < myFruits.length; index++) {
-    myOutput.innerHTML += `
+    for (let index = 0; index < myFruits.length; index++) {
+      myOutput.innerHTML += `
          <div class="col">
             <h1>${index + 1}. ${myFruits[index]}</h1>
             <p>Added on: ${currentDate}</p>
@@ -118,29 +113,27 @@ function newTask() {
                 <button class="danger" onclick="delTodo(${index})">Delete Todo</button>
             </div>
          </div>`;
-  }
+    }
   } else {
     deleteAllButton.style.display = "none";
     divBorder.classList.remove("add-box-shadow");
-    myOutput.innerHTML = "<p>Add some items to get started.</p>";
+    myOutput.innerHTML =
+      "<p>No tasks available. Please add new tasks to get started.</p>";
   }
 }
-
-
 
 function fetchFromLocalStorage() {
   var divBorder = document.querySelector(".div-border");
 
   if (myFruits.length > 0) {
     divBorder.classList.add("add-box-shadow");
-    newTask(myFruits); // Pass myFruits as a parameter to newTask
+    newTask(myFruits);
   } else {
     divBorder.classList.remove("add-box-shadow");
-    myOutput.innerHTML = "<p>Add some items to get started.</p>";
+    myOutput.innerHTML =
+      "<p>No tasks available. Please add new tasks to get started.</p>";
   }
 }
-
-
 
 // function fetchFromLocalStorage() {
 //   var divBorder = document.querySelector(".div-border");
