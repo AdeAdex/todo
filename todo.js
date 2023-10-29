@@ -75,7 +75,7 @@ function delTodo(userIndex) {
 
     localStorage.setItem("myFruits", JSON.stringify(myFruits));
   } else {
-    alertMessage.innerHTML = `You just canceled, your Todo "${task.task}" is not deleted`;
+    alertMessage.innerHTML = `The operation has been canceled. Your Todo "${task.task}" has not been deleted.`;
     alertMessage.style.backgroundColor = "rgba(200, 247, 197, 0.5)";
     alertMessage.style.color = "green";
     alertMessage.style.visibility = "visible";
