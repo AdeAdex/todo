@@ -51,10 +51,9 @@ body {
 }
 
 .no-box-shadow {
-    padding: 0; /* Remove padding */
-    box-shadow: none; /* Remove box shadow */
-  }
-  
+  padding: 0;
+  box-shadow: none;
+}
 
 .delete-task-btn {
   background-color: #e90909;

@@ -84,7 +84,6 @@ function delTodo(userIndex) {
       myOutput.innerHTML = myFruits;
       alertMessage.innerHTML = `All todos have been deleted.`;
   
-      // Apply the "no-box-shadow" class to remove box shadow and padding
       var divBorder = document.querySelector('.div-border');
       divBorder.classList.add('no-box-shadow');
   
@@ -103,6 +102,8 @@ function newTask() {
     deleteAllButton.style.display = "flex"
   } else {
     deleteAllButton.style.display = "none"
+    var divBorder = document.querySelector('.div-border');
+    divBorder.classList.add('no-box-shadow');
   }
   myOutput.innerHTML = '';
   const myInput = document.getElementById('myInput');
@@ -125,6 +126,8 @@ let deleteAllButton = document.getElementsByClassName('delete-task-btn')[0];
 function fetchFromLocalStorage() {
   if (!myFruits) {
     myFruits = [];
+    var divBorder = document.querySelector('.div-border');
+    divBorder.classList.add('no-box-shadow');
   }
   if (myFruits.length > 0) {
     newTask();
