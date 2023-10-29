@@ -118,7 +118,7 @@ function newTask() {
     deleteAllButton.style.display = "none";
     divBorder.classList.remove("add-box-shadow");
     myOutput.innerHTML =
-      "<p>No tasks available. Please add new tasks to get started.</p>";
+      `<p class="no-items">❗ No tasks available. Please add new tasks to get started.</p>`;
   }
 }
 
@@ -131,7 +131,7 @@ function fetchFromLocalStorage() {
   } else {
     divBorder.classList.remove("add-box-shadow");
     myOutput.innerHTML =
-      "<p>No tasks available. Please add new tasks to get started.</p>";
+      `<p class="no-items">❗ No tasks available. Please add new tasks to get started.</p>`;
   }
 }
 
