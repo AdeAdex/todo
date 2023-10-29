@@ -59,8 +59,6 @@ function editTodo(userIndex) {
   newTask();
 }
 
-
-
 function delTodo(userIndex) {
   const task = myFruits[userIndex];
 
@@ -110,11 +108,8 @@ function delAll() {
 
 let deleteAllButton = document.getElementsByClassName("delete-task-btn")[0];
 
-
 function newTask() {
   var divBorder = document.querySelector(".div-border");
-  // const currentDate = new Date().toLocaleString();
-
   if (myFruits.length > 0) {
     deleteAllButton.style.display = "flex";
     myOutput.innerHTML = "";
@@ -135,25 +130,18 @@ function newTask() {
   } else {
     deleteAllButton.style.display = "none";
     divBorder.classList.remove("add-box-shadow");
-    myOutput.innerHTML =
-      `<p class="no-items">❗ No tasks available. Please add new tasks to get started.</p>`;
-  }
-}
-
-
-
-function fetchFromLocalStorage() {
-  var divBorder = document.querySelector(".div-border");
-  // const storedTasks = JSON.parse(localStorage.getItem("myFruits")) || [];
-
-  if (myFruits.length > 0) {
-    // myFruits = storedTasks; // Update the myFruits array
-    divBorder.classList.add("add-box-shadow");
-    newTask(myFruits);
-  } else {
-    myFruits = []; // Initialize myFruits as an empty array
-    divBorder.classList.remove("add-box-shadow");
     myOutput.innerHTML = `<p class="no-items">❗ No tasks available. Please add new tasks to get started.</p>`;
   }
 }
 
+function fetchFromLocalStorage() {
+  var divBorder = document.querySelector(".div-border");
+  if (myFruits.length > 0) {
+    divBorder.classList.add("add-box-shadow");
+    newTask(myFruits);
+  } else {
+    myFruits = [];
+    divBorder.classList.remove("add-box-shadow");
+    myOutput.innerHTML = `<p class="no-items">❗ No tasks available. Please add new tasks to get started.</p>`;
+  }
+}
