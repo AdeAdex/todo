@@ -4,6 +4,7 @@ let myFruits = JSON.parse(localStorage.getItem('myFruits')) || [];
 
 function addTodo() {
   const myInput = document.getElementById('myInput');
+  var divBorder = document.querySelector('.div-border');
 
   if (myInput.value === '') {
     alertMessage.innerHTML = `Please enter a Todo to be added`;
@@ -18,6 +19,7 @@ function addTodo() {
     alertMessage.style.visibility = 'visible';
 
     localStorage.setItem('myFruits', JSON.stringify(myFruits));
+    divBorder.classList.add('add-box-shadow');
   }
   setTimeout(function () {
     alertMessage.style.visibility = 'hidden';
@@ -85,7 +87,7 @@ function delTodo(userIndex) {
       alertMessage.innerHTML = `All todos have been deleted.`;
   
       var divBorder = document.querySelector('.div-border');
-      divBorder.classList.add('no-box-shadow');
+      divBorder.classList.remove('add-box-shadow');
   
       setTimeout(function () {
         alertMessage.style.visibility = 'hidden';
@@ -96,14 +98,15 @@ function delTodo(userIndex) {
   
   
   
+  
 
 function newTask() {
+  var divBorder = document.querySelector('.div-border');
   if (myFruits.length > 0) {
     deleteAllButton.style.display = "flex"
   } else {
     deleteAllButton.style.display = "none"
-    var divBorder = document.querySelector('.div-border');
-    divBorder.classList.add('no-box-shadow');
+    divBorder.classList.remove('add-box-shadow');
   }
   myOutput.innerHTML = '';
   const myInput = document.getElementById('myInput');
@@ -124,12 +127,13 @@ function newTask() {
 let deleteAllButton = document.getElementsByClassName('delete-task-btn')[0];
 
 function fetchFromLocalStorage() {
+  var divBorder = document.querySelector('.div-border');
   if (!myFruits) {
     myFruits = [];
-    var divBorder = document.querySelector('.div-border');
-    divBorder.classList.add('no-box-shadow');
+    divBorder.classList.remove('add-box-shadow');
   }
   if (myFruits.length > 0) {
+    divBorder.classList.add('add-box-shadow');
     newTask();
   }
 }

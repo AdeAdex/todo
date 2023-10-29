@@ -45,14 +45,9 @@ body {
   margin: auto 0px;
 }
 
-.div-border {
+.add-box-shadow {
   padding: 10px 5px;
   box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2);
-}
-
-.no-box-shadow {
-  padding: 0;
-  box-shadow: none;
 }
 
 .delete-task-btn {
