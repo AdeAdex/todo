@@ -106,10 +106,15 @@ function newTask() {
   myOutput.innerHTML = "";
   const myInput = document.getElementById("myInput");
   myInput.value = "";
+
+  // Get the current date
+  const currentDate = new Date().toLocaleDateString();
+
   for (let index = 0; index < myFruits.length; index++) {
     myOutput.innerHTML += `
          <div class="col">
-            <h1>${myFruits[index]}</h1>
+            <h1>${index + 1}. ${myFruits[index]}</h1>
+            <p>Added on: ${currentDate}</p>
             <div class="actionBtn">
                 <button class="warning" onclick="editTodo(${index})">Edit Todo</button>
                 <button class="danger" onclick="delTodo(${index})">Delete Todo</button>
@@ -117,6 +122,7 @@ function newTask() {
          </div>`;
   }
 }
+
 
 let deleteAllButton = document.getElementsByClassName("delete-task-btn")[0];
 
