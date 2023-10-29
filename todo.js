@@ -1,9 +1,10 @@
 let myFruits = JSON.parse(localStorage.getItem("myFruits")) || [];
+var myOutput = document.getElementById("myOutput"); 
+const myInput = document.getElementById("myInput");
+
 
 function addTodo() {
-  const myInput = document.getElementById("myInput");
   var divBorder = document.querySelector(".div-border");
-
   if (myInput.value === "") {
     alertMessage.innerHTML = `Please enter a Todo to be added`;
     alertMessage.style.backgroundColor = "rgb(247, 204, 204)";
@@ -25,9 +26,32 @@ function addTodo() {
   newTask();
 }
 
+
+function editTodo(userIndex) {
+  if (myInput.value === "") {
+    alertMessage.innerHTML = `To update the task "${myFruits[userIndex]}", please enter a new Todo.`;
+    alertMessage.style.backgroundColor = "rgb(255, 223, 186)";
+    alertMessage.style.color = "rgb(255, 0, 0)";
+
+    alertMessage.style.visibility = "visible";
+  } else {
+    myFruits.splice(userIndex, 1, myInput.value);
+    alertMessage.innerHTML = `Your Todo has been updated successfully`;
+    alertMessage.style.backgroundColor = "rgba(200, 247, 197, 0.5)";
+    alertMessage.style.color = "green";
+    alertMessage.style.visibility = "visible";
+
+    localStorage.setItem("myFruits", JSON.stringify(myFruits));
+  }
+  setTimeout(function () {
+    alertMessage.style.visibility = "hidden";
+  }, 3000);
+  newTask();
+}
+
 function delTodo(userIndex) {
   var userResponse = confirm(
-    `Are you sure you want to delete this Todo? This action cannot be undone`
+    `Are you sure you want to delete this Todo "${myFruits[userIndex]}"? This action cannot be undone`
   );
   if (userResponse == true) {
     myFruits.splice(userIndex, 1);
@@ -39,7 +63,7 @@ function delTodo(userIndex) {
     // Save the updated myFruits array to localStorage immediately after deletion
     localStorage.setItem("myFruits", JSON.stringify(myFruits));
   } else {
-    alertMessage.innerHTML = `You just canceled, your Todo is not deleted`;
+    alertMessage.innerHTML = `You just canceled, your Todo "${myFruits[userIndex]}" is not deleted`;
     alertMessage.style.backgroundColor = "rgba(200, 247, 197, 0.5)";
     alertMessage.style.color = "green";
     alertMessage.style.visibility = "visible";
@@ -50,30 +74,6 @@ function delTodo(userIndex) {
   newTask();
 }
 
-function editTodo(userIndex) {
-  const myInput = document.getElementById("myInput");
-  for (let index = 0; index < myFruits.length; index++) {
-    if (myInput.value === "") {
-      alertMessage.innerHTML = `To update the task "${myFruits[userIndex]}", please enter a new Todo.`;
-      alertMessage.style.backgroundColor = "rgb(255, 223, 186)";
-      alertMessage.style.color = "rgb(255, 0, 0)";
-
-      alertMessage.style.visibility = "visible";
-    } else {
-      myFruits.splice(userIndex, 1, myInput.value);
-      alertMessage.innerHTML = `Your Todo has been updated successfully`;
-      alertMessage.style.backgroundColor = "rgba(200, 247, 197, 0.5)";
-      alertMessage.style.color = "green";
-      alertMessage.style.visibility = "visible";
-
-      localStorage.setItem("myFruits", JSON.stringify(myFruits));
-    }
-  }
-  setTimeout(function () {
-    alertMessage.style.visibility = "hidden";
-  }, 3000);
-  newTask();
-}
 
 function delAll() {
   var userResponse = confirm(
@@ -95,20 +95,18 @@ function delAll() {
   }
 }
 
+
+let deleteAllButton = document.getElementsByClassName("delete-task-btn")[0];
+
 function newTask() {
   var divBorder = document.querySelector(".div-border");
+  const currentDate = new Date().toLocaleDateString();
+
   if (myFruits.length > 0) {
     deleteAllButton.style.display = "flex";
-  } else {
-    deleteAllButton.style.display = "none";
-    divBorder.classList.remove("add-box-shadow");
-  }
-  myOutput.innerHTML = "";
-  const myInput = document.getElementById("myInput");
+     myOutput.innerHTML = "";
   myInput.value = "";
 
-  // Get the current date
-  const currentDate = new Date().toLocaleDateString();
 
   for (let index = 0; index < myFruits.length; index++) {
     myOutput.innerHTML += `
@@ -121,19 +119,38 @@ function newTask() {
             </div>
          </div>`;
   }
+  } else {
+    deleteAllButton.style.display = "none";
+    divBorder.classList.remove("add-box-shadow");
+    myOutput.innerHTML = "<p>Add some items to get started.</p>";
+  }
 }
 
 
-let deleteAllButton = document.getElementsByClassName("delete-task-btn")[0];
 
 function fetchFromLocalStorage() {
   var divBorder = document.querySelector(".div-border");
-  if (!myFruits) {
-    myFruits = [];
-    divBorder.classList.remove("add-box-shadow");
-  }
+
   if (myFruits.length > 0) {
     divBorder.classList.add("add-box-shadow");
-    newTask();
+    newTask(myFruits); // Pass myFruits as a parameter to newTask
+  } else {
+    divBorder.classList.remove("add-box-shadow");
+    myOutput.innerHTML = "<p>Add some items to get started.</p>";
   }
 }
+
+
+
+// function fetchFromLocalStorage() {
+//   var divBorder = document.querySelector(".div-border");
+//   if (!myFruits) {
+//     myFruits = [];
+//     divBorder.classList.remove("add-box-shadow");
+//     myOutput.innerHTML = "<p>Add some items to get started.</p>";
+//   }
+//   if (myFruits.length > 0) {
+//     divBorder.classList.add("add-box-shadow");
+//     newTask();
+//   }
+// }
