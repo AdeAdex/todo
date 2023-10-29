@@ -175,6 +175,20 @@ p {
   margin-left: 5px;
 }
 
+
+.warning:hover,
+.danger:hover {
+  transform: scale(1.05);
+  background-color: #FF3C3C;
+}
+
+
+.warning:hover,
+.danger:hover {
+  transform: scale(1.05);
+  background-color: #b600bc;
+}
+
 @media screen and (max-width: 600px) {
   body {
     padding: 10px;
